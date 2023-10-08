@@ -1,5 +1,5 @@
 # Ejemplo Documentación 
-![Tinkercad](./img/ArduinoTinkercad.jpg)
+![ArduinoTinkercad](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/5ee8614f-a3b0-4a44-b9e7-6fc14d10f65c)
 
 
 ## Integrantes 
