@@ -23,15 +23,15 @@ La función  printCount es la principal del proyecto. Utiliza dos funciones auxi
 ~~~ C++ (lenguaje en el que esta escrito)
 void printCount(int count)
 {
-    prendeDigito(APAGADOS);	 
-  	mostrarNumero(count/10); 
-  	prendeDigito(DECENA);    
-  	prendeDigito(APAGADOS);  
-  	mostrarNumero(count - 10*((int)count/10)); 
-  	prendeDigito(UNIDAD);    
+            prendeDigito(APAGADOS);
+  	mostrarNumero(count/10);
+  	prendeDigito(DECENA); 
+  	prendeDigito(APAGADOS);
+  	mostrarNumero(count - 10*((int)count/10));
+  	prendeDigito(UNIDAD);
 
 }
 ~~~
 
 ## Link al proyecto
-- [proyecto](https://www.tinkercad.com/things/0REFfgG2ElS-1er-parcial-domiciliario-parte-1/editel?sharecode=fL2W4WToWBjQc9V-5es2W3xl5AusKXuD0pabNZhHJkQ)
+- [SPD - Displays 7 segmentos](https://www.tinkercad.com/things/0REFfgG2ElS-1er-parcial-domiciliario-parte-1/editel?sharecode=fL2W4WToWBjQc9V-5es2W3xl5AusKXuD0pabNZhHJkQ)
