@@ -23,13 +23,12 @@ La función  printCount es la principal del proyecto. Utiliza dos funciones auxi
 ~~~ C++ (lenguaje en el que esta escrito)
 void printCount(int count)
 {
-            prendeDigito(APAGADOS);
-  	mostrarNumero(count/10);
-  	prendeDigito(DECENA); 
-  	prendeDigito(APAGADOS);
-  	mostrarNumero(count - 10*((int)count/10));
-  	prendeDigito(UNIDAD);
-
+ prendeDigito(APAGADOS);
+ mostrarNumero(count/10);
+ prendeDigito(DECENA); 
+ prendeDigito(APAGADOS);
+ mostrarNumero(count - 10*((int)count/10));
+ prendeDigito(UNIDAD);
 }
 ~~~
 
