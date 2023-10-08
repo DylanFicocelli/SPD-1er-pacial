@@ -32,5 +32,5 @@ void EncenderBinario(int estado3, int estado2,int estado1,int estado0)
 }
 ~~~
 
-## :robot: Link al proyecto
+## Link al proyecto
 - [proyecto](https://www.tinkercad.com/things/0REFfgG2ElS-1er-parcial-domiciliario-parte-1/editel?sharecode=fL2W4WToWBjQc9V-5es2W3xl5AusKXuD0pabNZhHJkQ)
