@@ -8,7 +8,8 @@
 
 
 ## Proyecto: Displays 7 segmentos.
-![Tinkercad](./img/ContadorBinario.png)
+![display 7 segmentos](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/a55ce53e-87b6-4aed-9d8c-a976a0f4632e)
+
 
 
 ## Descripción
