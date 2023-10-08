@@ -16,19 +16,20 @@
 El proyecto consiste en un contador digital de dos dígitos con displays de 7 segmentos y botones de control. Su principal función es contar y mostrar números en el rango de 0 a 99, permitiendo al usuario incrementar, disminuir o reiniciar el contador según sus necesidades. 
 
 ## Función principal
-Esta funcion se encarga de encender y apagar los leds.
+Esta función se encarga de reflejar el número actual en los displays y actualizar la visualización en tiempo real.
 
-B0, B1, B2, B3 son #define que utilizamos para agregar los leds, asociandolo a pines de la placa arduino.
+La función  printCount es la principal del proyecto. Utiliza dos funciones auxiliares, prendeDigito y mostrarNumero, para controlar y mostrar el número en los displays de siete segmentos. Primero, apaga todos los dígitos, luego muestra la cifra de las decenas en el display de la izquierda, enciende ese dígito y lo apaga, después muestra la cifra de las unidades en el display de la derecha y lo enciende.
 
-(Breve explicación de la función)
-
-~~~ C (lenguaje en el que esta escrito)
-void EncenderBinario(int estado3, int estado2,int estado1,int estado0)
+~~~ C++ (lenguaje en el que esta escrito)
+void printCount(int count)
 {
-  digitalWrite(B3,estado3);
-  digitalWrite(B2,estado2);
-  digitalWrite(B1,estado1);
-  digitalWrite(B0,estado0);
+    prendeDigito(APAGADOS);	 
+  	mostrarNumero(count/10); 
+  	prendeDigito(DECENA);    
+  	prendeDigito(APAGADOS);  
+  	mostrarNumero(count - 10*((int)count/10)); 
+  	prendeDigito(UNIDAD);    
+
 }
 ~~~
 
