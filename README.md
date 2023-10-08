@@ -7,12 +7,12 @@
 - Dylan Ficocelli 
 
 
-## Proyecto: Contador binario.
+## Proyecto: Displays 7 segmentos.
 ![Tinkercad](./img/ContadorBinario.png)
 
 
 ## Descripción
-En este parrafo deberan describir que funcion cumple su proyecto. Que solucion esta ofreciendo.
+El proyecto consiste en un contador digital de dos dígitos con displays de 7 segmentos y botones de control. Su principal función es contar y mostrar números en el rango de 0 a 99, permitiendo al usuario incrementar, disminuir o reiniciar el contador según sus necesidades. 
 
 ## Función principal
 Esta funcion se encarga de encender y apagar los leds.
