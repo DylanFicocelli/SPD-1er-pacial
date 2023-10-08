@@ -1,4 +1,4 @@
-# Ejemplo Documentación 
+# SPD 1er parcial - Display 7 segmentos
 ![ArduinoTinkercad](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/5ee8614f-a3b0-4a44-b9e7-6fc14d10f65c)
 
 
