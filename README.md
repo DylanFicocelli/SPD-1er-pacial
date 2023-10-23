@@ -7,7 +7,7 @@
 - Dylan Ficocelli 
 
 
-## Proyecto: Displays 7 segmentos.
+## Proyecto: Displays 7 segmentos - 1ra parte.
 ![display 7 segmentos](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/a55ce53e-87b6-4aed-9d8c-a976a0f4632e)
 
 
@@ -32,5 +32,79 @@ void printCount(int count)
 }
 ~~~
 
+## Proyecto: Displays 7 segmentos - 2da parte.
+
+![display 7 segmentos 2da parte](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/e2c4de82-843f-48dd-88d0-ade3ee121ec4)
+
+## Descripción
+Esta segunda parte del proyecto utiliza una serie de LEDs y displays de 7 segmentos para mostrar números. El usuario puede aumentar, disminuir o restablecer el número mostrado utilizando botones físicos. También tiene la capacidad de alternar entre mostrar números primos y números no primos. Además, ajusta la velocidad de un motor en función de la lectura de un sensor de fuerza.
+
+## Funciónes principales
+
+Las siguientes funciones se encargan de manejar la lógica relacionada con los números primos, el control del contador y la configuración de la velocidad de un motor en función de la lectura de un sensor de fueza. 
+~~~ C++ (lenguaje en el que esta escrito)
+// FUNCION PARA DETECTAR SI UN NUMERO ES O NO PRIMO.
+
+bool esPrimo(int numero) {
+  if (numero <= 1)
+    return false;
+  if (numero <= 3)
+    return true;
+  if (numero % 2 == 0 or numero % 3 == 0)
+    return false;
+  for (int i = 5; i * i <= numero; i += 6) {
+    if (numero % i == 0 or numero % (i + 2) == 0)
+      return false;
+  }
+  return true;
+}
+
+//FUNCIONES QUE PERMITEN QUE NUESTRO CONTADOR DE NUMEROS PRIMOS SEA CICLICO.
+
+int siguientePrimo(int numero) {
+  int siguiente = numero + 1;
+  while (true) {
+    if (siguiente > 97) siguiente = 2;  
+    if (esPrimo(siguiente)) return siguiente;
+    siguiente++;
+  }
+}
+
+int anteriorPrimo(int numero) {
+  int anterior = numero - 1;
+  while (true) {
+    if (anterior < 2) anterior = 97;
+    if (esPrimo(anterior)) return anterior;
+    anterior--;
+  }
+}
+//DETECTA EL ESTADO DEL INTERRUPTOR PARA SABER QUE MOSTRAR
+
+  if (digitalRead(INTERRUPTOR) == LOW) {
+    usarNumerosPrimos = true;
+  } else {
+    usarNumerosPrimos = false;
+  }
+
+//SEGÚN EL VALOR ASIGNADO, AUMENTA, DISMINUYE O REINICIA EL VALOR DEL CONTADOR.
+
+  int pressed = keyPressed();
+  if (usarNumerosPrimos) {
+    if (pressed == SUBE) {
+      contador = siguientePrimo(contador);
+    } else if (pressed == BAJA) {
+      contador = anteriorPrimo(contador);
+    } else if (pressed == RESET) {
+      contador = 2;  
+    }
+ 
+//CONFIGURACION RELACION MOTOR-FSR 
+  
+  int valorFSR = analogRead(A0);
+  int velocidadMotor = map(valorFSR, 1023, 109, 0, 255); 
+  analogWrite(6, velocidadMotor);
+  printCount(contador);
+~~~ 
+
 ## Link al proyecto
-- [SPD - Displays 7 segmentos](https://www.tinkercad.com/things/0REFfgG2ElS-1er-parcial-domiciliario-parte-1/editel?sharecode=fL2W4WToWBjQc9V-5es2W3xl5AusKXuD0pabNZhHJkQ)
+- [SPD - Displays 7 segmentos]([https://www.tinkercad.com/things/0REFfgG2ElS-1er-parcial-domiciliario-parte-1/editel?sharecode=fL2W4WToWBjQc9V-5es2W3xl5AusKXuD0pabNZhHJkQ](https://www.tinkercad.com/things/lVhXqOEvwvs-copy-of-1er-parcial-domiciliario-parte-1/editel?sharecode=--cA0zDOCJx_jQAPqOwLAkRBCTWHKWf4TssC110CaMk)https://www.tinkercad.com/things/lVhXqOEvwvs-copy-of-1er-parcial-domiciliario-parte-1/editel?sharecode=--cA0zDOCJx_jQAPqOwLAkRBCTWHKWf4TssC110CaMk)
