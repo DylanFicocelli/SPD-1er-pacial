@@ -111,7 +111,7 @@ int anteriorPrimo(int numero) {
 
 ## Proyecto: Displays 7 segmentos - 3ra parte.
 
-##Parte individual Dylan Ficocelli
+-Parte individual Dylan Ficocelli
 
 ![fotodiodo](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/16fd2850-5cab-420a-8b77-349fde50c468)
 
@@ -133,9 +133,9 @@ La función principal involucra la lectura de la intensidad de la luz ambiente u
 ## Link al proyecto
 - [SPD - Displays 7 segmentos - Fotodiodo](https://www.tinkercad.com/things/7rAXrLO2QN1-copy-of-1er-parcial-domiciliario-spd/editel?sharecode=9NrfgnWK2sDxVOgxanmNHB2ccIntT3Bghxnt0HD6U_I)
 
-  ##Parte individual Facundo Fiestas
+-Parte individual Facundo Fiestas
 
-![fotodiodo]![Fotoresistor](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/15fbb5ca-1984-4127-8d45-e4514a9afe73)
+![Fotoresistor](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/15fbb5ca-1984-4127-8d45-e4514a9afe73)
 
 
 
