@@ -1,0 +1,324 @@
+//DYLAN FICOCELLI
+//DEFINO LOS PINES CON LOS QUE VOY A TRABAJAR.
+#define A 12
+#define B 13
+#define C 7
+#define D 8
+#define E 9
+#define F 11
+#define G 10
+#define SUBE 4
+#define BAJA 3
+#define RESET 5
+#define UNIDAD A4
+#define DECENA A5
+#define INTERRUPTOR 2
+#define APAGADOS 0
+#define TIEMPO 10
+
+//DECLARO LAS VARIABLES A UTILIZAR EN EL PROGRAMA.
+bool usarNumerosPrimos = false;
+int sube = 1;
+int subePrevia = 1;
+int baja = 1;
+int bajaPrevia = 1;
+int reset = 1;
+int resetPrevia = 1;
+int contador = 0;
+int primerPrimo = 2;
+int cicloDeTrabajoMotor = 0;
+int fotodiodoPin = A3;
+
+////CONFIGURO LOS PINES.
+void setup() {
+  pinMode(2, INPUT_PULLUP);
+  pinMode(3, INPUT_PULLUP);
+  pinMode(4, INPUT_PULLUP);
+  pinMode(5, INPUT_PULLUP);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(13, OUTPUT);
+  pinMode(A4, OUTPUT);
+  pinMode(A5, OUTPUT);
+  digitalWrite(UNIDAD, LOW);
+  digitalWrite(DECENA, LOW);
+  pinMode(A0, INPUT);
+  pinMode(fotodiodoPin, INPUT);
+  
+  Serial.begin(9600);
+}
+
+int keyPressed() {
+  /*
+  declaro las variables, sube, baja y reset, las cuales leen
+  el estado de los botones en los pines 3 4 Y 5, leeran:
+  0: Si el boton esta presionado
+  1: Si el boton no esta presionado
+  */
+  sube = digitalRead(SUBE);
+  baja = digitalRead(BAJA);
+  reset = digitalRead(RESET);
+  /*
+  Cuando un botón se deja de oprimir, su valor previo se iguala
+  automáticamente a 1 (HIGH), evitando entrar nuevamente al
+  loop y detectar múltiples pulsaciones mientras el botón
+  se mantiene presionado.
+  */
+
+  if (sube)
+    subePrevia = 1;
+  if (baja)
+    bajaPrevia = 1;
+  if (reset)
+    resetPrevia = 1;
+    /*
+  Esta sección del código detecta la pulsación de los botones y
+  previene la detección múltiple, mientras un botón se mantiene
+  presionado. Cuando un botón se oprime por primera vez en
+  una secuencia, su valor actual es 0 (LOW) y su valor previo
+  es 1 (HIGH), lo que desencadena la condición if y retorna
+  la respuesta correspondiente.
+  */
+
+  if (sube == 0 && sube != subePrevia) {
+    subePrevia = sube;
+    return SUBE;
+  }
+
+  if (baja == 0 && baja != bajaPrevia) {
+    bajaPrevia = baja;
+    return BAJA;
+  }
+
+  if (reset == 0 && reset != resetPrevia) {
+    resetPrevia = reset;
+    return RESET;
+  }
+  return 0;
+}
+
+// FUNCION PARA DETECTAR SI UN NUMERO ES O NO PRIMO.
+bool esPrimo(int numero) {
+  if (numero <= 1)
+    return false;
+  if (numero <= 3)
+    return true;
+  if (numero % 2 == 0 or numero % 3 == 0)
+    return false;
+  for (int i = 5; i * i <= numero; i += 6) {
+    if (numero % i == 0 or numero % (i + 2) == 0)
+      return false;
+  }
+  return true;
+}
+/*
+FUNCIONES QUE PERMITEN QUE NUESTRO CONTADOR DE NUMEROS PRIMOS
+SEA CICLICO.
+*/
+int siguientePrimo(int numero) {
+  int siguiente = numero + 1;
+  while (true) {
+    if (siguiente > 97) siguiente = 2;  
+    if (esPrimo(siguiente)) return siguiente;
+    siguiente++;
+  }
+}
+
+int anteriorPrimo(int numero) {
+  int anterior = numero - 1;
+  while (true) {
+    if (anterior < 2) anterior = 97;
+    if (esPrimo(anterior)) return anterior;
+    anterior--;
+  }
+}
+//LOOP
+void loop()
+  
+{
+  //DETECTA EL ESTADO DEL INTERRUPTOR PARA SABER QUE MOSTRAR
+  if (digitalRead(INTERRUPTOR) == LOW) {
+    usarNumerosPrimos = true;
+  } else {
+    usarNumerosPrimos = false;
+  }
+   /*
+  Segun el valor asignado, aumenta, disminuye o resetea el 
+  valor del contador
+  */
+  int pressed = keyPressed();
+  if (usarNumerosPrimos) {
+    if (pressed == SUBE) {
+      contador = siguientePrimo(contador);
+    } else if (pressed == BAJA) {
+      contador = anteriorPrimo(contador);
+    } else if (pressed == RESET) {
+      contador = 2;  
+    }
+  } else {
+    if (pressed == SUBE) {
+      contador++;
+      if (contador > 99)
+        contador = 0;
+    } else if (pressed == BAJA) {
+      contador--;
+      if (contador < 0)
+        contador = 99;
+    } else if (pressed == RESET) {
+      contador = 0;
+    }
+  }
+  //CONFIGURACION RELACION MOTOR-FSR 
+  
+  int valorFSR = analogRead(A0);
+  int velocidadMotor = map(valorFSR, 1023, 109, 0, 255); 
+  analogWrite(6, velocidadMotor);
+  printCount(contador);
+  
+  
+  //CONFIGURACION DEL FOTODIODO.
+  int lecturaFotodiodo = analogRead(fotodiodoPin);
+  int valorFotodiodo = map(lecturaFotodiodo, 0, 85, 0, 100);
+  Serial.print("Lectura del fotodiodo:");
+  Serial.println(valorFotodiodo);
+  
+  
+}
+
+void printCount(int count)
+{
+  /*
+  1- Apago todos los leds
+  2- mando la señal de la decena
+  3- Prendo el display de la decena
+  4- Apago el display
+  5- Mando la señal de la unidad
+  6- Prendo display de la unidad
+  */
+	prendeDigito(APAGADOS);	 //1
+  	mostrarNumero(count/10); //2
+  	prendeDigito(DECENA);    //3
+  	prendeDigito(APAGADOS);  //4
+  	mostrarNumero(count - 10*((int)count/10)); //5
+  	prendeDigito(UNIDAD);    //6
+
+}
+
+void mostrarNumero(int numero)
+    /*
+  1-APAGO TODOS LOS LEDS
+  2- PRENDO LOS LEDS CORRESPONDIENTES AL NUMERO INGRESADO POR
+  PARAMETRO
+  */
+{
+  digitalWrite(A, LOW);
+  digitalWrite(B, LOW);
+  digitalWrite(C, LOW);
+  digitalWrite(D, LOW);
+  digitalWrite(E, LOW);
+  digitalWrite(F, LOW);
+  digitalWrite(G, LOW);
+
+  switch (numero) {
+    case 0:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(F, HIGH);
+      break;
+    case 1:
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+    case 2:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(G, HIGH);
+      break;
+    case 3:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(G, HIGH);
+      break;
+    case 4:
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      break;
+    case 5:
+      digitalWrite(A, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      break;
+    case 6:
+      digitalWrite(A, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      break;
+    case 7:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      break;
+    case 8:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(E, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      break;
+    case 9:
+      digitalWrite(A, HIGH);
+      digitalWrite(B, HIGH);
+      digitalWrite(C, HIGH);
+      digitalWrite(D, HIGH);
+      digitalWrite(F, HIGH);
+      digitalWrite(G, HIGH);
+      break;
+  }
+}
+
+void prendeDigito(int digito) 
+  /*
+  determino que display se prende, en relacion a que digito
+  ingresa como parametro.
+  Si ingresa UNIDAD: 
+  	-prendo display de derecha y apago el de la izquierda
+  Si ingresa DECENA
+  	-prendo display de izquierda y apago el de la derecha
+  */
+{
+  if (digito == UNIDAD) {
+    digitalWrite(UNIDAD, LOW);
+    digitalWrite(DECENA, HIGH);
+    delay(TIEMPO);
+  } else if (digito == DECENA) {
+    digitalWrite(UNIDAD, HIGH);
+    digitalWrite(DECENA, LOW);
+    delay(TIEMPO);
+  } else {
+    digitalWrite(UNIDAD, HIGH);
+    digitalWrite(DECENA, HIGH);
+  }
+}
+
+
+
