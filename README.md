@@ -107,4 +107,4 @@ int anteriorPrimo(int numero) {
 ~~~ 
 
 ## Link al proyecto
-- [SPD - Displays 7 segmentos]([https://www.tinkercad.com/things/0REFfgG2ElS-1er-parcial-domiciliario-parte-1/editel?sharecode=fL2W4WToWBjQc9V-5es2W3xl5AusKXuD0pabNZhHJkQ](https://www.tinkercad.com/things/lVhXqOEvwvs-copy-of-1er-parcial-domiciliario-parte-1/editel?sharecode=--cA0zDOCJx_jQAPqOwLAkRBCTWHKWf4TssC110CaMk)https://www.tinkercad.com/things/lVhXqOEvwvs-copy-of-1er-parcial-domiciliario-parte-1/editel?sharecode=--cA0zDOCJx_jQAPqOwLAkRBCTWHKWf4TssC110CaMk)
+- [SPD - Displays 7 segmentos](https://www.tinkercad.com/things/lVhXqOEvwvs-copy-of-1er-parcial-domiciliario-parte-1/editel?sharecode=--cA0zDOCJx_jQAPqOwLAkRBCTWHKWf4TssC110CaMk)
