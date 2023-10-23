@@ -135,7 +135,8 @@ La función principal involucra la lectura de la intensidad de la luz ambiente u
 
   ##Parte individual Facundo Fiestas
 
-![fotodiodo](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/16fd2850-5cab-420a-8b77-349fde50c468)
+![fotodiodo]![Fotoresistor](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/15fbb5ca-1984-4127-8d45-e4514a9afe73)
+
 
 
 ## Descripción
