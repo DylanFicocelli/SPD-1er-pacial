@@ -108,3 +108,53 @@ int anteriorPrimo(int numero) {
 
 ## Link al proyecto
 - [SPD - Displays 7 segmentos](https://www.tinkercad.com/things/lVhXqOEvwvs-copy-of-1er-parcial-domiciliario-parte-1/editel?sharecode=--cA0zDOCJx_jQAPqOwLAkRBCTWHKWf4TssC110CaMk)
+
+## Proyecto: Displays 7 segmentos - 3ra parte.
+
+##Parte individual Dylan Ficocelli
+
+![fotodiodo](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/16fd2850-5cab-420a-8b77-349fde50c468)
+
+
+## Descripción
+Se agrega un fotodiodo al circuito.
+
+## Función principal
+La función principal involucra la lectura de la intensidad de la luz ambiente utilizando el fotodiodo y luego la muestra por serial
+
+~~~ C++ (lenguaje en el que esta escrito)
+  //CONFIGURACION DEL FOTODIODO.
+  int lecturaFotodiodo = analogRead(fotodiodoPin);
+  int valorFotodiodo = map(lecturaFotodiodo, 0, 85, 0, 100);
+  Serial.print("Lectura del fotodiodo:");
+  Serial.println(valorFotodiodo);
+~~~
+
+## Link al proyecto
+- [SPD - Displays 7 segmentos - Fotodiodo](https://www.tinkercad.com/things/7rAXrLO2QN1-copy-of-1er-parcial-domiciliario-spd/editel?sharecode=9NrfgnWK2sDxVOgxanmNHB2ccIntT3Bghxnt0HD6U_I)
+
+  ##Parte individual Facundo Fiestas
+
+![fotodiodo](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/16fd2850-5cab-420a-8b77-349fde50c468)
+
+
+## Descripción
+Se agrega un fototransistor al circuito.
+
+## Función principal
+La función principal involucra la lectura de la luz ambiente utilizando el fototransistor y luego muestra por serial el estado HIGH/LOW
+
+~~~ C++ (lenguaje en el que esta escrito)
+    //CONFIGURACION DEL FOTORESISTOR
+  int valorFototransistor = analogRead(A1);
+
+if (valorFototransistor == 0) {
+  Serial.println("Valor del Fototransistor: LOW");
+} else if (valorFototransistor != 0) {
+  Serial.println("Valor del Fototransistor: HIGH");
+}
+~~~
+
+## Link al proyecto
+- [SPD - Displays 7 segmentos - Fotoresistor](https://www.tinkercad.com/things/grhwCnDGqEx-copy-of-1er-parcial-domiciliario-spd/editel?sharecode=kEe3BXCOUsoV5C2kqc78QYM5kmVIkmvIbPkKUwLXZms&sharecode=kEe3BXCOUsoV5C2kqc78QYM5kmVIkmvIbPkKUwLXZms)
+
