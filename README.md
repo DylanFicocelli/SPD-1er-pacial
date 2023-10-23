@@ -157,5 +157,5 @@ if (valorFototransistor == 0) {
 ~~~
 
 ## Link al proyecto
-- [SPD - Displays 7 segmentos - Fotoresistor](https://www.tinkercad.com/things/grhwCnDGqEx-copy-of-1er-parcial-domiciliario-spd/editel?sharecode=kEe3BXCOUsoV5C2kqc78QYM5kmVIkmvIbPkKUwLXZms&sharecode=kEe3BXCOUsoV5C2kqc78QYM5kmVIkmvIbPkKUwLXZms)
+- [SPD - Displays 7 segmentos - Fotoresistor](https://www.tinkercad.com/things/grhwCnDGqEx-copy-of-1er-parcial-domiciliario-spd/editel?sharecode=kEe3BXCOUsoV5C2kqc78QYM5kmVIkmvIbPkKUwLXZms)
 
