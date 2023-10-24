@@ -9,7 +9,8 @@
 
 
 ## Proyecto: Displays 7 segmentos - 1ra parte.
-![display 7 segmentos](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/a55ce53e-87b6-4aed-9d8c-a976a0f4632e)
+![display 7 segmentos]![display](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/550d69a7-22f8-44b4-9e13-329f64bb6282)
+
 
 
 
@@ -35,7 +36,8 @@ void printCount(int count)
 
 ## Proyecto: Displays 7 segmentos - 2da parte.
 
-![display 7 segmentos 2da parte](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/e2c4de82-843f-48dd-88d0-ade3ee121ec4)
+![display 7 segmentos 2da parte](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/b54fa0fb-3785-43d8-bae5-ca4378b4db0a)
+
 
 ## Descripción
 Esta segunda parte del proyecto utiliza una serie de LEDs y displays de 7 segmentos para mostrar números. El usuario puede aumentar, disminuir o restablecer el número mostrado utilizando botones físicos. También tiene la capacidad de alternar entre mostrar números primos y números no primos. Además, ajusta la velocidad de un motor en función de la lectura de un sensor de fuerza.
@@ -114,7 +116,8 @@ int anteriorPrimo(int numero) {
 
 -Parte individual Dylan Ficocelli
 
-![fotodiodo](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/16fd2850-5cab-420a-8b77-349fde50c468)
+![fotodiodo](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/0c86b991-39bb-4523-a486-75b904aea2f5)
+
 
 
 ## Descripción
@@ -136,7 +139,7 @@ La función principal involucra la lectura de la intensidad de la luz ambiente u
 
 -Parte individual Facundo Fiestas
 
-![Fotoresistor](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/15fbb5ca-1984-4127-8d45-e4514a9afe73)
+![Fotoresistor](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/4b3b9eff-45a2-4cf4-bc7e-8ecfaa330ce7)
 
 
 
