@@ -1,5 +1,6 @@
 # SPD 1er parcial - Display 7 segmentos
-![ArduinoTinkercad](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/5ee8614f-a3b0-4a44-b9e7-6fc14d10f65c)
+![ArduinoTinkercad](https://github.com/DylanFicocelli/SPD-1er-pacial/assets/138259829/87f50d5e-5847-4b37-96c3-b3fdec4153b2)
+
 
 
 ## Integrantes 
